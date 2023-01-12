@@ -1,0 +1,142 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": ["./tsconfig.json"]
+      }
+    },
+    "polyfills": ["Promise", "URLSearchParams"]
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:compat/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier", "react-hooks", "import"],
+  "rules": {
+    "react/display-name": "off",
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "jest/valid-describe": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-unresolved": "error",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "react-**",
+            "group": "builtin"
+          },
+          {
+            "pattern": "axios",
+            "group": "external"
+          },
+          {
+            "pattern": "date-fns",
+            "group": "external"
+          },
+          {
+            "pattern": "lodash",
+            "group": "external"
+          },
+          {
+            "pattern": "file-saver",
+            "group": "external"
+          },
+          {
+            "pattern": "styled-components",
+            "group": "external"
+          },
+          {
+            "pattern": "formik",
+            "group": "external"
+          },
+          {
+            "pattern": "qs",
+            "group": "external"
+          },
+          {
+            "pattern": "@components/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "antd",
+            "group": "internal"
+          },
+          {
+            "pattern": "@ant-design/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@models/**",
+            "group": "parent"
+          },
+          {
+            "pattern": "@api",
+            "group": "sibling"
+          },
+          {
+            "pattern": "@api/**",
+            "group": "sibling"
+          },
+          {
+            "pattern": "@utils/**",
+            "group": "type"
+          },
+          {
+            "pattern": "@hooks/**",
+            "group": "type"
+          },
+          {
+            "pattern": "@constants/**",
+            "group": "type"
+          },
+          {
+            "pattern": "@contexts/**",
+            "group": "type"
+          },
+          {
+            "pattern": "@assets/**",
+            "group": "type"
+          },
+          {
+            "pattern": "./**",
+            "group": "index"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "type",
+          "index"
+        ],
+        "pathGroupsExcludedImportTypes": []
+      }
+    ]
+  }
+}

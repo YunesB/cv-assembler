@@ -1,13 +1,13 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
-import "./App.css";
+import { SectionHeader } from "./components/molecules/SectionHeader";
 
 const App: FC = () => {
   return (
     <>
       <div className="bg-black w-fll h-full p-10 relative z-10">
         <div className="bg-white w-1/2 mx-auto p-5 rounded-md shadow-lg shadow-cyan-500/50">
-          TEST
+          <SectionHeader title="TEST" />
         </div>
       </div>
 
