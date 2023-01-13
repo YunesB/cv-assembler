@@ -16,7 +16,13 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/custom.d.ts"
+  ],
   "resolve": {
     "extensions": [".js", ".jsx", ".ts", ".tsx"]
   }

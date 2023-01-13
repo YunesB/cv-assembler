@@ -1,18 +1,20 @@
 import { FC, useMemo } from "react";
 
-import { TSize } from "../../projectTypes/general.types";
+import { TSize, TSvg } from "../../projectTypes/general.types";
 import { FIT_SIZE, LARGE_SIZE, MEDIUM_SIZE } from "../../utils/constants";
 
 type TProps = {
-  src: string;
+  src: TSvg;
   size?: TSize | typeof FIT_SIZE;
   color?: string;
+  className?: string;
 };
 
 export const Icon: FC<TProps> = ({
   src,
   color = "#000000",
-  size = FIT_SIZE
+  size = FIT_SIZE,
+  className
 }) => {
   const iconSize = useMemo(() => {
     switch (size) {
@@ -27,10 +29,12 @@ export const Icon: FC<TProps> = ({
     }
   }, [size]);
 
+  const textColor = `text-${color}`;
+
   return (
     <img
-      src={src}
-      className={`text-[${color}] h-${iconSize} w-${iconSize}`}
+      src={src as unknown as string}
+      className={`${textColor} h-${iconSize} w-${iconSize} ${className}`}
       alt="icon"
     />
   );
