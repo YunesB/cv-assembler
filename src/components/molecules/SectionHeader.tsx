@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 
-import { IconButton } from "@components/atoms/IconButton";
-
+import { IconButton } from "../atoms/IconButton";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import check from "../../assets/icons/сheck.svg";
@@ -10,12 +9,12 @@ import check from "../../assets/icons/сheck.svg";
 import close from "../../assets/icons/close.svg";
 
 type TProps = {
-  title: string;
+  title?: string;
 };
 
 export const SectionHeader: FC<TProps> = ({ title }) => {
   const [isEdited, setEdited] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(title ? title : "");
 
   return (
     <div
@@ -30,13 +29,13 @@ export const SectionHeader: FC<TProps> = ({ title }) => {
             onChange={(e) => setInputValue(e.target.value)}
             className="m-0 uppercase w-full"
           />
-          <div className="flex items-center justify-between">
-            <IconButton src={check} />
+          <div className="flex items-center ml-4">
+            <IconButton src={check} className="mr-2" />
             <IconButton src={close} />
           </div>
         </div>
       ) : (
-        <h2 className="text-lg py-4 border-b-2 border-black m-0 uppercase">
+        <h2 className="text-lg m-0 uppercase border-t-2 border-b-2 border-white">
           {inputValue}
         </h2>
       )}
