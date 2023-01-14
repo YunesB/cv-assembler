@@ -31,7 +31,7 @@ const App: FC = () => {
 
   return (
     <>
-      <div className="w-fll h-full p-10 relative z-10">
+      <div className="max-w-[980px] w-full h-full p-10 relative z-10 m-auto">
         <DragDropContext onDragEnd={onDragEnd}>
           <StrictModeDroppable droppableId="droppable">
             {(provided, snapshot) => (
@@ -49,7 +49,9 @@ const App: FC = () => {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className={`${snapshot.isDragging ? "opacity-75" : ""}`}
+                        className={`${
+                          snapshot.isDragging ? "opacity-75" : ""
+                        } max-w-[90%]`}
                       >
                         <Section title={title} />
                       </div>
