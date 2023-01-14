@@ -1,6 +1,7 @@
-import { FC } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { FC, useState } from "react";
+import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
 
+import { StrictModeDroppable } from "./components/molecules/StrictDroppable";
 import { Section } from "./components/organisms/Section";
 
 const SECTIONS = [
@@ -15,20 +16,33 @@ const SECTIONS = [
 ];
 
 const App: FC = () => {
+  const [sections, setSections] = useState(SECTIONS);
+
+  const onDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const newItems = [...sections];
+    const [removed] = newItems.splice(result.source.index, 1);
+    newItems.splice(result.destination.index, 0, removed);
+    setSections(newItems);
+  };
+
   return (
     <>
-      <div className="bg-black w-fll h-full p-10 relative z-10">
-        <DragDropContext onDragEnd={() => console.log("1")}>
-          <Droppable droppableId="droppable">
+      <div className="w-fll h-full p-10 relative z-10">
+        <DragDropContext onDragEnd={onDragEnd}>
+          <StrictModeDroppable droppableId="droppable">
             {(provided, snapshot) => (
               <div
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                className={`space-y-6 ${
-                  snapshot.isDraggingOver ? "bg-sky-500" : ""
+                className={`space-y-6 min-h-[400px] ${
+                  snapshot.isDraggingOver ? "" : ""
                 }`}
               >
-                {SECTIONS.map(({ name, title }, index) => (
+                {sections.map(({ name, title }, index) => (
                   <Draggable key={name} draggableId={name} index={index}>
                     {(provided, snapshot) => (
                       <div
@@ -42,9 +56,10 @@ const App: FC = () => {
                     )}
                   </Draggable>
                 ))}
+                {provided.placeholder}
               </div>
             )}
-          </Droppable>
+          </StrictModeDroppable>
         </DragDropContext>
       </div>
       <div className="bg-black w-[100vw] h-[100vh] fixed inset-0 z-0" />

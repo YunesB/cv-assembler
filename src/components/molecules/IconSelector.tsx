@@ -42,10 +42,10 @@ export const IconSelector: FC<TProps> = ({ size, className }) => {
           className="absolute -b-20 bg-white shadow-md rounded-md border border-sky-100 grid grid-cols-4 gap-2 w-[154px] z-50"
           ref={selectArea as React.RefObject<HTMLDivElement>}
         >
-          {[...allIcons, ...allIcons].map(({ name, icon }) => (
+          {[...allIcons, ...allIcons].map(({ name, icon }, index) => (
             <IconButton
               src={icon}
-              key={name}
+              key={`${name}-${index}`}
               onClick={() => handleIconChange(icon)}
               className="relative"
             />
