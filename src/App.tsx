@@ -3,15 +3,24 @@ import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
 
 import { StrictModeDroppable } from "./components/molecules/StrictDroppable";
 import { Section } from "./components/organisms/Section";
+import { TSection } from "./projectTypes/general.types";
+import { DATED_SECTION_TYPE, SKILLS_SECTION_TYPE } from "./utils/constants";
 
-const SECTIONS = [
+const SECTIONS: TSection[] = [
   {
     name: "experience",
-    title: "Experience"
+    title: "Experience",
+    type: DATED_SECTION_TYPE
   },
   {
     name: "education",
-    title: "Education"
+    title: "Education",
+    type: DATED_SECTION_TYPE
+  },
+  {
+    name: "skills",
+    title: "Skills",
+    type: SKILLS_SECTION_TYPE
   }
 ];
 
@@ -42,7 +51,7 @@ const App: FC = () => {
                   snapshot.isDraggingOver ? "" : ""
                 }`}
               >
-                {sections.map(({ name, title }, index) => (
+                {sections.map(({ name, title, type }, index) => (
                   <Draggable key={name} draggableId={name} index={index}>
                     {(provided, snapshot) => (
                       <div
@@ -53,7 +62,7 @@ const App: FC = () => {
                           snapshot.isDragging ? "opacity-75" : ""
                         } max-w-[90%]`}
                       >
-                        <Section title={title} />
+                        <Section title={title} type={type} />
                       </div>
                     )}
                   </Draggable>

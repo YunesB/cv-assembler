@@ -36,7 +36,7 @@ export const IconButton: FC<TProps> = ({
   return (
     <button
       type={type}
-      className={`p-1 border-none ${className} hover:opacity-75 transition-all ${buttonSize} rounded-md hover:bg-sky-100 transition-all`}
+      className={`p-1 border-none ${className} transition-all ${buttonSize} rounded-md hover:bg-orange-300 bg-blue-50 transition-all`}
       onClick={onClick}
     >
       <Icon src={src} color={color} size={size} />

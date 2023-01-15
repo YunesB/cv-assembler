@@ -11,3 +11,7 @@ export const FIT_SIZE = "fit";
 export const CHECK_ICON = "check";
 export const CANCEL_ICON = "cancel";
 export const EDIT_ICON = "edit";
+
+export const DATED_SECTION_TYPE = "dated";
+export const SKILLS_SECTION_TYPE = "skills";
+export const LIST_SECTION_TYPE = "list";

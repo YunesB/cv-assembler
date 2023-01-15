@@ -1,5 +1,6 @@
 import { FC } from "react";
 
+import { TSectionType } from "../../projectTypes/general.types";
 import { MEDIUM_SIZE } from "../../utils/constants";
 import { DragIconHorizontal } from "../../utils/icons";
 import { Icon } from "../atoms/Icon";
@@ -8,9 +9,10 @@ import { SectionHeader } from "../molecules/SectionHeader";
 
 type TProps = {
   title?: string;
+  type: TSectionType;
 };
 
-export const Section: FC<TProps> = ({ title }) => {
+export const Section: FC<TProps> = ({ title, type }) => {
   return (
     <div className="relative bg-white w-full mx-auto rounded-md shadow-lg shadow-cyan-500/50">
       <Icon
@@ -20,7 +22,7 @@ export const Section: FC<TProps> = ({ title }) => {
       />
       <div className="w-full p-6">
         <SectionHeader title={title} />
-        <SectionBody />
+        <SectionBody type={type} />
       </div>
     </div>
   );

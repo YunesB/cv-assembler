@@ -66,7 +66,7 @@ export const SectionHeader: FC<TProps> = ({ title }) => {
         </div>
       ) : (
         <h2
-          className="text-lg m-0 uppercase leading-8 w-full hover:bg-sky-100 transition-all cursor-pointer bg-white"
+          className="text-lg m-0 uppercase leading-8 w-full hover:bg-blue-50 transition-all cursor-pointer bg-white"
           onClick={() => setEdited(true)}
         >
           {initialValue}
