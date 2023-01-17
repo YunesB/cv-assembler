@@ -3,12 +3,14 @@ import close from "../assets/icons/close.svg";
 import edit from "../assets/icons/edit.svg";
 import drag from "../assets/icons/drag.svg";
 import dragHor from "../assets/icons/drag-horizontal.svg";
+import deleteIcon from "../assets/icons//delete.svg";
 
 export const CheckIcon = check;
 export const CloseIcon = close;
 export const EditIcon = edit;
 export const DragIconVertical = drag;
 export const DragIconHorizontal = dragHor;
+export const DeleteIcon = deleteIcon;
 
 export const allIcons = [
   { name: "check", icon: CheckIcon },

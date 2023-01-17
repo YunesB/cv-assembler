@@ -4,28 +4,10 @@ import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
 import { StrictModeDroppable } from "./components/molecules/StrictDroppable";
 import { Section } from "./components/organisms/Section";
 import { TSection } from "./projectTypes/general.types";
-import { DATED_SECTION_TYPE, SKILLS_SECTION_TYPE } from "./utils/constants";
-
-const SECTIONS: TSection[] = [
-  {
-    name: "experience",
-    title: "Experience",
-    type: DATED_SECTION_TYPE
-  },
-  {
-    name: "education",
-    title: "Education",
-    type: DATED_SECTION_TYPE
-  },
-  {
-    name: "skills",
-    title: "Skills",
-    type: SKILLS_SECTION_TYPE
-  }
-];
+import { INITIAL_SECTIONS } from "./utils/constants";
 
 const App: FC = () => {
-  const [sections, setSections] = useState(SECTIONS);
+  const [sections, setSections] = useState<TSection[]>(INITIAL_SECTIONS);
 
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) {
@@ -51,7 +33,7 @@ const App: FC = () => {
                   snapshot.isDraggingOver ? "" : ""
                 }`}
               >
-                {sections.map(({ name, title, type }, index) => (
+                {sections.map(({ name, title, type, data }, index) => (
                   <Draggable key={name} draggableId={name} index={index}>
                     {(provided, snapshot) => (
                       <div
@@ -62,7 +44,7 @@ const App: FC = () => {
                           snapshot.isDragging ? "opacity-75" : ""
                         } max-w-[90%]`}
                       >
-                        <Section title={title} type={type} />
+                        <Section title={title} type={type} data={data} />
                       </div>
                     )}
                   </Draggable>

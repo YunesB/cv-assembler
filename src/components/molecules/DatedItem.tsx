@@ -1,26 +1,20 @@
 import { ChangeEvent, FC, useState } from "react";
 
-import { CheckIcon, CloseIcon } from "../../utils/icons";
+import { TTableDataType } from "../../projectTypes/general.types";
+import { COMMON_INPUT_CLASSES } from "../../utils/constants";
+import { CheckIcon, CloseIcon, DeleteIcon } from "../../utils/icons";
 import { IconButton } from "../atoms/IconButton";
 
-type TDataType = {
-  from: string;
-  to: string;
-  jobTitle: string;
-  description: string;
-};
-
 type TProps = {
-  data: TDataType;
+  data: TTableDataType;
 };
 
 export const DatedItem: FC<TProps> = ({ data }) => {
   const [isEdited, setEdited] = useState(false);
-  const [initialValues, setInitialValues] = useState<TDataType>(data);
-  const [inputValues, setInputValues] = useState<TDataType>(data);
+  const [initialValues, setInitialValues] = useState<TTableDataType>(data);
+  const [inputValues, setInputValues] = useState<TTableDataType>(data);
 
   const { from, to, jobTitle, description } = inputValues;
-  const commonInputClasses = "border border-blue-500 rounded-sm";
 
   const handleConfirm = () => {
     setInitialValues(inputValues);
@@ -48,7 +42,7 @@ export const DatedItem: FC<TProps> = ({ data }) => {
             <input
               name="from"
               type="text"
-              className={`w-2/5 text-sm ${commonInputClasses}`}
+              className={`w-2/5 text-sm ${COMMON_INPUT_CLASSES}`}
               value={from}
               onChange={onChangeInput}
             />
@@ -56,7 +50,7 @@ export const DatedItem: FC<TProps> = ({ data }) => {
             <input
               name="to"
               type="text"
-              className={`w-2/5 text-sm ${commonInputClasses}`}
+              className={`w-2/5 text-sm ${COMMON_INPUT_CLASSES}`}
               value={to}
               onChange={onChangeInput}
             />
@@ -65,23 +59,23 @@ export const DatedItem: FC<TProps> = ({ data }) => {
           <input
             name="jobTitle"
             type="text"
-            className={`w-full max-h-[25px] mb-2 ${commonInputClasses}`}
+            className={`w-full max-h-[25px] mb-2 ${COMMON_INPUT_CLASSES}`}
             value={jobTitle}
             onChange={onChangeInput}
           />
 
-          <div className="flex items-center mt-auto">
-            <IconButton
-              src={CheckIcon}
-              className="mr-2"
-              onClick={handleConfirm}
-            />
+          <div className="flex items-center mt-auto space-x-2">
+            <IconButton src={CheckIcon} onClick={handleConfirm} />
             <IconButton src={CloseIcon} onClick={handleCancel} />
+            <IconButton
+              src={DeleteIcon}
+              onClick={() => console.log("delete")}
+            />
           </div>
 
           <textarea
             name="description"
-            className={`w-full min-h-[70px] text-sm ${commonInputClasses}`}
+            className={`w-full min-h-[70px] text-sm ${COMMON_INPUT_CLASSES}`}
             value={description}
             onChange={(e) => onChangeTextArea(e)}
           />
@@ -98,7 +92,7 @@ export const DatedItem: FC<TProps> = ({ data }) => {
           </div>
           <p className="font-semibold">{jobTitle}</p>
           <p></p>
-          <p className="text-sm">{description}</p>
+          <p className="text-sm min-h-[70px] w-full">{description}</p>
         </li>
       )}
     </>

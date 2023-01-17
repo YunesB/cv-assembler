@@ -30,8 +30,23 @@ export type TSectionType =
 
 export type TSvg = React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 
+export type TTableDataType = {
+  from: string;
+  to: string;
+  jobTitle: string;
+  description: string;
+};
+
+export type TSkill = {
+  name: string;
+  value: number;
+};
+
+export type TDataType = TTableDataType[] | TSkill[];
+
 export type TSection = {
   name: string;
   title: string;
   type: TSectionType;
+  data: TDataType;
 };
