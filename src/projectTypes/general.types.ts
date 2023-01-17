@@ -35,11 +35,13 @@ export type TTableDataType = {
   to: string;
   jobTitle: string;
   description: string;
+  id: string;
 };
 
 export type TSkill = {
   name: string;
   value: number;
+  id: string;
 };
 
 export type TDataType = TTableDataType[] | TSkill[];
@@ -48,5 +50,6 @@ export type TSection = {
   name: string;
   title: string;
   type: TSectionType;
+  id: string;
   data: TDataType;
 };

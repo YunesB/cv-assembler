@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 import { TSection } from "../projectTypes/general.types";
 
 export const BUTTON_TYPE = "button";
@@ -25,25 +27,13 @@ export const INITIAL_SECTIONS: TSection[] = [
     name: "experience",
     title: "Experience",
     type: DATED_SECTION_TYPE,
+    id: `${uuidv4()}-${DATED_SECTION_TYPE}`,
     data: [
       {
         from: "26 AUG 2018",
         to: "27 AUG 2020",
         jobTitle: "Google LLC, California, CA",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam magna, congue in orci facilisis, tincidunt finibus mauris. Aliquam elementum maximus vehicula."
-      }
-    ]
-  },
-  {
-    name: "education",
-    title: "Education",
-    type: DATED_SECTION_TYPE,
-    data: [
-      {
-        from: "26 AUG 2018",
-        to: "27 AUG 2020",
-        jobTitle: "Google LLC, California, CA",
+        id: `${uuidv4()}-inner`,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam magna, congue in orci facilisis, tincidunt finibus mauris. Aliquam elementum maximus vehicula."
       }
@@ -53,22 +43,27 @@ export const INITIAL_SECTIONS: TSection[] = [
     name: "skills",
     title: "Skills",
     type: SKILLS_SECTION_TYPE,
+    id: `${uuidv4()}-${SKILLS_SECTION_TYPE}`,
     data: [
       {
         name: "HTML",
-        value: 10
+        value: 10,
+        id: "default-001"
       },
       {
         name: "CSS",
-        value: 10
+        value: 10,
+        id: "default-002"
       },
       {
         name: "JavaScript",
-        value: 80
+        value: 80,
+        id: "default-003"
       },
       {
         name: "React",
-        value: 70
+        value: 70,
+        id: "default-004"
       }
     ]
   }

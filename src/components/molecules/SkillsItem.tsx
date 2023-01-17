@@ -2,29 +2,24 @@ import { ChangeEvent, FC, useMemo, useState } from "react";
 
 import { TSkill } from "../../projectTypes/general.types";
 import { COMMON_INPUT_CLASSES } from "../../utils/constants";
-import { CheckIcon, CloseIcon } from "../../utils/icons";
+import { CheckIcon, CloseIcon, DeleteIcon } from "../../utils/icons";
 import { IconButton } from "../atoms/IconButton";
 
 type TProps = {
   data: TSkill;
+  onDelete: (id: string) => void;
 };
 
 const MIN_RANGE_VALUE = 0;
 const MAX_RANGE_VALUE = 100;
 
 const MAX_SKILL_NAME_WIDTH = "max-w-[200px]";
-const COMMON_LIST_CLASSES =
-  "flex items-center justify-start hover:bg-blue-50 h-[32px]";
+const COMMON_LIST_CLASSES = "flex items-center justify-start h-[32px]";
 
-export const SkillsItem: FC<TProps> = ({ data }) => {
-  const { name, value } = data;
-
+export const SkillsItem: FC<TProps> = ({ data, onDelete }) => {
   const [isEdited, setEdited] = useState(false);
-  const [initialValues, setInitialValues] = useState<TSkill>({ name, value });
-  const [currentValues, setCurrentValues] = useState<TSkill>({
-    name,
-    value
-  });
+  const [initialValues, setInitialValues] = useState<TSkill>(data);
+  const [currentValues, setCurrentValues] = useState<TSkill>(data);
 
   const width = useMemo(() => `${currentValues.value}%`, [currentValues.value]);
 
@@ -62,17 +57,17 @@ export const SkillsItem: FC<TProps> = ({ data }) => {
             value={currentValues.value}
             onChange={handleInputChange}
           />
-          <div className="flex items-center ml-auto">
-            <IconButton
-              src={CheckIcon}
-              className="mr-2"
-              onClick={handleConfirm}
-            />
+          <div className="flex items-center ml-auto space-x-2">
+            <IconButton src={CheckIcon} onClick={handleConfirm} />
             <IconButton src={CloseIcon} onClick={handleCancel} />
+            <IconButton src={DeleteIcon} onClick={() => onDelete(data.id)} />
           </div>
         </li>
       ) : (
-        <li className={COMMON_LIST_CLASSES} onClick={() => setEdited(true)}>
+        <li
+          className={COMMON_LIST_CLASSES + " hover:bg-blue-50"}
+          onClick={() => setEdited(true)}
+        >
           <p className={`mr-4 w-[200px] text-sm`}>{currentValues.name}</p>
           <div className="w-[200px] h-[10px] bg-gray-200 overflow-hidden relative">
             <div

@@ -7,14 +7,15 @@ import { IconButton } from "../atoms/IconButton";
 
 type TProps = {
   data: TTableDataType;
+  onDelete: (id: string) => void;
 };
 
-export const DatedItem: FC<TProps> = ({ data }) => {
+export const DatedItem: FC<TProps> = ({ data, onDelete }) => {
   const [isEdited, setEdited] = useState(false);
   const [initialValues, setInitialValues] = useState<TTableDataType>(data);
   const [inputValues, setInputValues] = useState<TTableDataType>(data);
 
-  const { from, to, jobTitle, description } = inputValues;
+  const { from, to, jobTitle, description, id } = inputValues;
 
   const handleConfirm = () => {
     setInitialValues(inputValues);
@@ -67,10 +68,7 @@ export const DatedItem: FC<TProps> = ({ data }) => {
           <div className="flex items-center mt-auto space-x-2">
             <IconButton src={CheckIcon} onClick={handleConfirm} />
             <IconButton src={CloseIcon} onClick={handleCancel} />
-            <IconButton
-              src={DeleteIcon}
-              onClick={() => console.log("delete")}
-            />
+            <IconButton src={DeleteIcon} onClick={() => onDelete(id)} />
           </div>
 
           <textarea
