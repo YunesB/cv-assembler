@@ -25,15 +25,16 @@ type TProps = {
 };
 
 const EMPTY_TABLE_LINE = {
-  from: "DATE",
-  to: "DATE",
-  jobTitle: "JOB TITLE",
+  from: "Date",
+  to: "Date",
+  jobTitle: "Job Title",
+  companyName: "Company",
   id: "",
-  description: "DESCRIPTION"
+  description: "description"
 };
 
 const EMPTY_SKILL_LINE = {
-  name: "NAME",
+  name: "Skill Name",
   value: 50,
   id: ""
 };

@@ -32,7 +32,8 @@ export const INITIAL_SECTIONS: TSection[] = [
       {
         from: "26 AUG 2018",
         to: "27 AUG 2020",
-        jobTitle: "Google LLC, California, CA",
+        jobTitle: "Developer",
+        companyName: "Google LLC, California, CA",
         id: `${uuidv4()}-inner`,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam magna, congue in orci facilisis, tincidunt finibus mauris. Aliquam elementum maximus vehicula."

@@ -33,6 +33,7 @@ export type TSvg = React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 export type TTableDataType = {
   from: string;
   to: string;
+  companyName: string;
   jobTitle: string;
   description: string;
   id: string;

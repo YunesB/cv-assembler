@@ -15,7 +15,7 @@ export const DatedItem: FC<TProps> = ({ data, onDelete }) => {
   const [initialValues, setInitialValues] = useState<TTableDataType>(data);
   const [inputValues, setInputValues] = useState<TTableDataType>(data);
 
-  const { from, to, jobTitle, description, id } = inputValues;
+  const { from, to, jobTitle, companyName, description, id } = inputValues;
 
   const handleConfirm = () => {
     setInitialValues(inputValues);
@@ -57,13 +57,22 @@ export const DatedItem: FC<TProps> = ({ data, onDelete }) => {
             />
           </div>
 
-          <input
-            name="jobTitle"
-            type="text"
-            className={`w-full max-h-[25px] mb-2 ${COMMON_INPUT_CLASSES}`}
-            value={jobTitle}
-            onChange={onChangeInput}
-          />
+          <div>
+            <input
+              name="jobTitle"
+              type="text"
+              className={`w-full max-h-[25px] mb-2 ${COMMON_INPUT_CLASSES}`}
+              value={jobTitle}
+              onChange={onChangeInput}
+            />
+            <input
+              name="companyName"
+              type="text"
+              className={`w-full max-h-[25px] mb-2 ${COMMON_INPUT_CLASSES}`}
+              value={companyName}
+              onChange={onChangeInput}
+            />
+          </div>
 
           <div className="flex items-center mt-auto space-x-2">
             <IconButton src={CheckIcon} onClick={handleConfirm} />
@@ -83,12 +92,15 @@ export const DatedItem: FC<TProps> = ({ data, onDelete }) => {
           className={`grid grid-cols-2 gap-2 hover:bg-blue-50`}
           onClick={() => setEdited(true)}
         >
-          <div className="flex items-center">
+          <div className="flex items-start">
             <p className="text-sm">{from}</p>
-            <span className="mx-2">-</span>
+            <span className="mx-2 text-sm">-</span>
             <p className="text-sm">{to}</p>
           </div>
-          <p className="font-semibold">{jobTitle}</p>
+          <div>
+            <p className="font-semibold uppercase">{jobTitle}</p>
+            <p className="font-semibold">{companyName}</p>
+          </div>
           <p></p>
           <p className="text-sm min-h-[70px] w-full">{description}</p>
         </li>
