@@ -54,3 +54,13 @@ export type TSection = {
   id: string;
   data: TDataType;
 };
+
+export type TPersonalData = {
+  fullName: string;
+  profession: string;
+};
+
+export type TColors = {
+  bg: string;
+  text: string;
+};

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { TSection } from "../projectTypes/general.types";
+import { TColors, TSection } from "../projectTypes/general.types";
 
 export const BUTTON_TYPE = "button";
 export const SUBMIT_TYPE = "submit";
@@ -67,5 +67,20 @@ export const INITIAL_SECTIONS: TSection[] = [
         id: "default-004"
       }
     ]
+  }
+];
+
+export const COLOR_SCHEMAS: TColors[] = [
+  {
+    bg: "yellow",
+    text: "black"
+  },
+  {
+    bg: "orange",
+    text: "black"
+  },
+  {
+    bg: "darkBlue",
+    text: "white"
   }
 ];

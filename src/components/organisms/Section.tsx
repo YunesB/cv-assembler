@@ -15,7 +15,7 @@ type TProps = {
 
 export const Section: FC<TProps> = ({ title, type, data }) => {
   return (
-    <div className="relative bg-white w-full mx-auto rounded-md shadow-lg shadow-cyan-500/50">
+    <div className="relative bg-white w-full mx-auto rounded-md shadow-md">
       <Icon
         src={DragIconHorizontal}
         className="absolute top-2 right-4"
