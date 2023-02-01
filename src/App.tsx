@@ -6,7 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { AddSectionButtons } from "./components/atoms/AddSectionButtons";
 import { ColorSelector } from "./components/atoms/ColorSelector";
 import { PhotoUpload } from "./components/molecules/PhotoUpload";
+import { ShortDescription } from "./components/molecules/ShortDescription";
 import { StrictModeDroppable } from "./components/molecules/StrictDroppable";
+import { Contacts } from "./components/organisms/Contacts";
 import { GeneralInfo } from "./components/organisms/GeneralInfo";
 import { Section } from "./components/organisms/Section";
 import { TColors, TSection } from "./projectTypes/general.types";
@@ -72,8 +74,12 @@ const App: FC = () => {
               />
             ))}
           </div>
-          <GeneralInfo />
-          <PhotoUpload className="mt-10" />
+          <div className="mx-10 space-y-10">
+            <GeneralInfo />
+            <PhotoUpload />
+            <ShortDescription />
+            <Contacts />
+          </div>
         </div>
         <div className="max-w-[700px] w-full h-full p-10 relative z-10">
           <DragDropContext onDragEnd={onDragEnd}>

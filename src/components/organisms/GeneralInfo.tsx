@@ -33,7 +33,7 @@ export const GeneralInfo: FC = () => {
   return (
     <>
       {isEdited ? (
-        <div className="m-10 flex flex-col space-y-2 transition-all">
+        <div className="flex flex-col space-y-2 transition-all">
           <input
             name="fullName"
             type="text"
@@ -55,7 +55,7 @@ export const GeneralInfo: FC = () => {
         </div>
       ) : (
         <div
-          className="m-10 flex flex-col space-y-2 hover:opacity-50 transition-all cursor-pointer"
+          className="flex flex-col space-y-2 hover:opacity-50 transition-all cursor-pointer"
           onClick={() => setEdited(true)}
         >
           <h1 className="text-4xl font-bold uppercase tracking-widest max-w-full">

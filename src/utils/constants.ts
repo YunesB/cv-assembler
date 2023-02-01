@@ -72,15 +72,22 @@ export const INITIAL_SECTIONS: TSection[] = [
 
 export const COLOR_SCHEMAS: TColors[] = [
   {
+    bg: "darkBlue",
+    text: "white"
+  },
+  {
     bg: "yellow",
     text: "black"
   },
   {
     bg: "orange",
     text: "black"
-  },
-  {
-    bg: "darkBlue",
-    text: "white"
   }
 ];
+
+export const STRING_TYPE = "string";
+export const LINK_TYPE = "link";
+export const MAIL_TYPE = "mail";
+export const PHONE_TYPE = "phone";
+
+export const SOCIAL_MEDIA = "social";

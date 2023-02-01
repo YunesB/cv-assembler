@@ -5,11 +5,15 @@ import {
   DATED_SECTION_TYPE,
   EDIT_ICON,
   LARGE_SIZE,
+  LINK_TYPE,
   LIST_SECTION_TYPE,
+  MAIL_TYPE,
   MEDIUM_SIZE,
+  PHONE_TYPE,
   RESET_TYPE,
   SKILLS_SECTION_TYPE,
   SMALL_SIZE,
+  STRING_TYPE,
   SUBMIT_TYPE
 } from "../utils/constants";
 
@@ -63,4 +67,15 @@ export type TPersonalData = {
 export type TColors = {
   bg: string;
   text: string;
+};
+
+export type TContactType =
+  | typeof STRING_TYPE
+  | typeof LINK_TYPE
+  | typeof MAIL_TYPE
+  | typeof PHONE_TYPE;
+
+export type TContact = {
+  type: TContactType;
+  value: string;
 };
