@@ -78,4 +78,10 @@ export type TContactType =
 export type TContact = {
   type: TContactType;
   value: string;
+  id: string;
+};
+
+export type TContactTypeSelect = {
+  type: TContactType;
+  icon: TSvg;
 };

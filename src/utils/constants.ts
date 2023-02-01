@@ -1,6 +1,18 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { TColors, TSection } from "../projectTypes/general.types";
+import {
+  TColors,
+  TSection,
+  TContactTypeSelect,
+  TContact
+} from "../projectTypes/general.types";
+
+import {
+  DragIconHorizontal,
+  DragIconVertical,
+  EditIcon,
+  PlusIcon
+} from "./icons";
 
 export const BUTTON_TYPE = "button";
 export const SUBMIT_TYPE = "submit";
@@ -91,3 +103,48 @@ export const MAIL_TYPE = "mail";
 export const PHONE_TYPE = "phone";
 
 export const SOCIAL_MEDIA = "social";
+
+export const CONTACT_TYPES: TContactTypeSelect[] = [
+  {
+    type: STRING_TYPE,
+    icon: EditIcon
+  },
+  {
+    type: LINK_TYPE,
+    icon: DragIconHorizontal
+  },
+  {
+    type: MAIL_TYPE,
+    icon: DragIconVertical
+  },
+  {
+    type: PHONE_TYPE,
+    icon: PlusIcon
+  }
+];
+
+export const COMMON_LINK_CLASSES =
+  "m-0 color-unset hover:underline transition-all";
+
+export const INITIAL_CONTACTS: TContact[] = [
+  {
+    id: `${`${uuidv4()}-${STRING_TYPE}`}`,
+    type: STRING_TYPE,
+    value: "Lorem Ipsum 22, APT 11, 050011, California, LA"
+  },
+  {
+    id: `${`${uuidv4()}-${LINK_TYPE}`}`,
+    type: LINK_TYPE,
+    value: "https://www.yunes.ru"
+  },
+  {
+    id: `${`${uuidv4()}-${MAIL_TYPE}`}`,
+    type: MAIL_TYPE,
+    value: "yunes.b@gmail.com"
+  },
+  {
+    id: `${`${uuidv4()}-${PHONE_TYPE}`}`,
+    type: PHONE_TYPE,
+    value: "+74959379992"
+  }
+];
