@@ -4,7 +4,9 @@ import { COMMON_INPUT_CLASSES } from "../../utils/constants";
 import { CheckIcon, CloseIcon } from "../../utils/icons";
 import { IconButton } from "../atoms/IconButton";
 
-const INITIAL_VALUE = "Lorem Ipsum";
+const INITIAL_VALUE = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Etiam metus augue, elementum nec tellus ac, consectetur varius tellus. 
+Pellentesque non lacinia lorem, at varius leo. Donec sapien lorem, ultricies ut cursus ac, ultrices at ex.`;
 
 type TProps = {
   className?: string;

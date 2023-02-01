@@ -15,3 +15,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.custom-upload {
+  display: inline-block;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  border-radius: 50%;
+}
+
+.custom-upload:hover {
+  background-image: url("./assets/icons/edit.svg");
+  background-color: rgba(255, 255, 255, 0.7);
+  filter: invert();
+}
