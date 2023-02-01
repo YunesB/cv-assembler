@@ -53,6 +53,23 @@ export const INITIAL_SECTIONS: TSection[] = [
     ]
   },
   {
+    name: "education",
+    title: "Education",
+    type: DATED_SECTION_TYPE,
+    id: `${uuidv4()}-${DATED_SECTION_TYPE}-edu`,
+    data: [
+      {
+        from: "26 AUG 2018",
+        to: "27 AUG 2020",
+        jobTitle: "Bachelor",
+        companyName: "Harvard",
+        id: `${uuidv4()}-inner`,
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam magna, congue in orci facilisis, tincidunt finibus mauris. Aliquam elementum maximus vehicula."
+      }
+    ]
+  },
+  {
     name: "skills",
     title: "Skills",
     type: SKILLS_SECTION_TYPE,

@@ -88,7 +88,7 @@ const App: FC = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className={`space-y-6 min-h-[400px]  mx-auto ${
+                  className={`space-y-6 min-h-[400px] mx-auto ${
                     snapshot.isDraggingOver ? "" : ""
                   }`}
                 >

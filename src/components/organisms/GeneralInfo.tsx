@@ -62,6 +62,7 @@ export const GeneralInfo: FC = () => {
             {personalData.fullName}
           </h1>
           <h2 className="uppercase tracking-wide">{personalData.profession}</h2>
+          <span className="h-[32px]"></span>
         </div>
       )}
     </>
