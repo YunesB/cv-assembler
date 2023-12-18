@@ -30,3 +30,35 @@ code {
   background-color: rgba(255, 255, 255, 0.4);
   filter: invert();
 }
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #fb923c;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #fdba74;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #fb923c;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #fdba74;
+}

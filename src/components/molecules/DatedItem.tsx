@@ -81,7 +81,7 @@ export const DatedItem: FC<TProps> = ({ data, onDelete }) => {
 
         <textarea
           name="description"
-          className={`w-full min-h-[70px] text-sm ${COMMON_INPUT_CLASSES}`}
+          className={`w-full min-h-[70px] text-sm ${COMMON_INPUT_CLASSES} custom-scroll`}
           value={description}
           onChange={(e) => onChangeTextArea(e)}
         />

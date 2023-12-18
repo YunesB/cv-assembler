@@ -37,46 +37,43 @@ export const SkillsItem: FC<TProps> = ({ data, onDelete }) => {
     setEdited(false);
   };
 
+  if (isEdited) {
+    return (
+      <li className={COMMON_LIST_CLASSES}>
+        <input
+          type="text"
+          name="name"
+          className={`w-full mr-4 ${MAX_SKILL_NAME_WIDTH} text-sm ${COMMON_INPUT_CLASSES}`}
+          value={currentValues.name}
+          onChange={handleInputChange}
+        />
+        <input
+          type="range"
+          name="value"
+          min={MIN_RANGE_VALUE}
+          max={MAX_RANGE_VALUE}
+          className={`w-full ${MAX_SKILL_NAME_WIDTH} h-[10px] bg-orange-300 text-sm ${COMMON_INPUT_CLASSES}`}
+          value={currentValues.value}
+          onChange={handleInputChange}
+        />
+        <div className="flex items-center ml-auto space-x-2">
+          <IconButton src={CheckIcon} onClick={handleConfirm} />
+          <IconButton src={CloseIcon} onClick={handleCancel} />
+          <IconButton src={DeleteIcon} onClick={() => onDelete(data.id)} />
+        </div>
+      </li>
+    );
+  }
+
   return (
-    <>
-      {isEdited ? (
-        <li className={COMMON_LIST_CLASSES}>
-          <input
-            type="text"
-            name="name"
-            className={`w-full mr-4 ${MAX_SKILL_NAME_WIDTH} text-sm ${COMMON_INPUT_CLASSES}`}
-            value={currentValues.name}
-            onChange={handleInputChange}
-          />
-          <input
-            type="range"
-            name="value"
-            min={MIN_RANGE_VALUE}
-            max={MAX_RANGE_VALUE}
-            className={`w-full ${MAX_SKILL_NAME_WIDTH} h-[10px] bg-orange-300 text-sm ${COMMON_INPUT_CLASSES}`}
-            value={currentValues.value}
-            onChange={handleInputChange}
-          />
-          <div className="flex items-center ml-auto space-x-2">
-            <IconButton src={CheckIcon} onClick={handleConfirm} />
-            <IconButton src={CloseIcon} onClick={handleCancel} />
-            <IconButton src={DeleteIcon} onClick={() => onDelete(data.id)} />
-          </div>
-        </li>
-      ) : (
-        <li
-          className={COMMON_LIST_CLASSES + " hover:bg-blue-50"}
-          onClick={() => setEdited(true)}
-        >
-          <p className={`mr-4 w-[200px] text-sm`}>{currentValues.name}</p>
-          <div className="w-[200px] h-[10px] bg-gray-200 overflow-hidden relative">
-            <div
-              className={`aboslute bg-orange-500 h-full`}
-              style={{ width }}
-            />
-          </div>
-        </li>
-      )}
-    </>
+    <li
+      className={COMMON_LIST_CLASSES + " hover:bg-blue-50"}
+      onClick={() => setEdited(true)}
+    >
+      <p className={`mr-4 w-[200px] text-sm`}>{currentValues.name}</p>
+      <div className="w-[200px] h-[10px] bg-gray-200 overflow-hidden relative">
+        <div className={`aboslute bg-orange-500 h-full`} style={{ width }} />
+      </div>
+    </li>
   );
 };
