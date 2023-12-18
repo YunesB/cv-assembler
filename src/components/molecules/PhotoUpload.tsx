@@ -2,7 +2,14 @@ import { ChangeEvent, FC, useState } from "react";
 
 import { UserIcon } from "../../utils/icons";
 
-export const PhotoUpload: FC = () => {
+type TProps = {
+  colors: {
+    bg: string;
+    text: string;
+  };
+};
+
+export const PhotoUpload: FC<TProps> = ({ colors }) => {
   const [photo, setPhoto] = useState<any>(UserIcon);
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +25,9 @@ export const PhotoUpload: FC = () => {
   };
 
   return (
-    <div className="w-[180px] h-[180px] relative flex items-start justify-center overflow-hidden">
+    <div
+      className={`w-[180px] h-[180px] relative flex items-start justify-center overflow-hidden border-4 border-${colors.text} rounded-full`}
+    >
       <img
         src={photo}
         alt="profile pic"

@@ -110,7 +110,7 @@ export const COLOR_SCHEMAS: TColors[] = [
   },
   {
     bg: "orange",
-    text: "black"
+    text: "white"
   }
 ];
 

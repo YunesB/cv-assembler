@@ -55,11 +55,18 @@ const getStaticDataContainer = ({ type, value }: TContact) => {
 };
 
 type TProps = {
+  colors: {
+    bg: string;
+    text: string;
+  };
+};
+
+type TItemProps = {
   data: TContact;
   onDelete: (id: string) => void;
 };
 
-const ContactItem: FC<TProps> = ({ data, onDelete }) => {
+const ContactItem: FC<TItemProps> = ({ data, onDelete }) => {
   const { type, value, id } = data;
 
   const [isEdited, setEdited] = useState(false);
@@ -119,19 +126,19 @@ const ContactItem: FC<TProps> = ({ data, onDelete }) => {
   );
 };
 
-const AddButton: FC<{ onAdd: () => void }> = ({ onAdd }) => {
+const AddButton: FC<{ onAdd: () => void } & TProps> = ({ onAdd, colors }) => {
   return (
     <button
       type="button"
       className="w-full flex spacy-y-2 items-center justify-center h-[25px] hover:bg-blue-50"
       onClick={onAdd}
     >
-      <Icon src={PlusIcon} size={MEDIUM_SIZE} />
+      <Icon src={PlusIcon} size={MEDIUM_SIZE} color={colors.text} />
     </button>
   );
 };
 
-export const Contacts: FC = () => {
+export const Contacts: FC<TProps> = ({ colors }) => {
   const [contacts, setContacts] = useState(INITIAL_CONTACTS);
 
   const handleDelete = (id: string) => {
@@ -144,12 +151,12 @@ export const Contacts: FC = () => {
   };
 
   return (
-    <ul className="border-t-2 border-white space-y-2 pt-4">
-      {contacts.map((data, index) => (
+    <ul className="space-y-2">
+      {contacts.map((data) => (
         <ContactItem data={data} key={data.id} onDelete={handleDelete} />
       ))}
 
-      <AddButton onAdd={handleAddLine} />
+      <AddButton onAdd={handleAddLine} colors={colors} />
     </ul>
   );
 };

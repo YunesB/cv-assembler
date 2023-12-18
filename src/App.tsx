@@ -60,7 +60,7 @@ const App: FC = () => {
 
   return (
     <>
-      <div className="max-w-[1240px] w-full flex justify-between bg-blue-50 m-auto relative z-10">
+      <div className="max-w-[1240px] w-full flex justify-between bg-blue-50 m-auto relative z-10 shadow-lg border-l-2 border-r-2">
         <div
           className={`max-w-[540px] w-full h-auto p-10 relative transition-all`}
           style={{ backgroundColor: colors.bg, color: colors.text }}
@@ -76,9 +76,10 @@ const App: FC = () => {
           </div>
           <div className="mx-10 space-y-10">
             <GeneralInfo />
-            <PhotoUpload />
+            <PhotoUpload colors={colors} />
             <ShortDescription />
-            <Contacts />
+            <hr className={`mb-4 h-1 bg-${colors.text}`} />
+            <Contacts colors={colors} />
           </div>
         </div>
         <div className="max-w-[700px] w-full h-full p-10 relative z-10">
@@ -120,7 +121,8 @@ const App: FC = () => {
           />
         </div>
       </div>
-      <div className="bg-black w-[100vw] h-[100vh] fixed inset-0 z-0" />
+
+      <div className="bg-black bg-[url('./assets/images/bg.jpg')] bg-cover blur-sm w-[100vw] h-[100vh] fixed inset-0 z-0" />
     </>
   );
 };

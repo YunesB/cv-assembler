@@ -31,31 +31,31 @@ export const ShortDescription: FC<TProps> = ({ className }) => {
     setEdited(false);
   };
 
-  return (
-    <>
-      {isEdited ? (
-        <div
-          className={`w-full flex items-start justify-between space-x-2 ${className}`}
-        >
-          <textarea
-            className={`w-full min-h-[100px] bg-transparent ${COMMON_INPUT_CLASSES}`}
-            value={inputValue}
-            onChange={onChange}
-          />
+  if (isEdited) {
+    return (
+      <div
+        className={`w-full flex items-start justify-between space-x-2 ${className}`}
+      >
+        <textarea
+          className={`w-full min-h-[100px] bg-transparent ${COMMON_INPUT_CLASSES}`}
+          value={inputValue}
+          onChange={onChange}
+        />
 
-          <div className="flex flex-col items-center space-y-2">
-            <IconButton src={CheckIcon} onClick={handleConfirm} />
-            <IconButton src={CloseIcon} onClick={handleCancel} />
-          </div>
+        <div className="flex flex-col items-center space-y-2">
+          <IconButton src={CheckIcon} onClick={handleConfirm} />
+          <IconButton src={CloseIcon} onClick={handleCancel} />
         </div>
-      ) : (
-        <div
-          className={`flex ${className} hover:opacity-50 transition-all cursor-pointer min-h-[100px]`}
-          onClick={() => setEdited(true)}
-        >
-          <span>{inputValue}</span>
-        </div>
-      )}
-    </>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`flex ${className} hover:opacity-50 transition-all cursor-pointer min-h-[100px]`}
+      onClick={() => setEdited(true)}
+    >
+      <span>{inputValue}</span>
+    </div>
   );
 };
