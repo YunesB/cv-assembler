@@ -3,6 +3,7 @@ import { useRef, FC, useEffect, useState } from "react";
 import { TSize, TSvg } from "../../projectTypes/general.types";
 import { allIcons, EditIcon } from "../../utils/icons";
 import { IconButton } from "../atoms/IconButton";
+import { handleClickOutside } from "../../utils/helpers";
 
 type TProps = {
   size?: TSize;
@@ -20,17 +21,14 @@ export const IconSelector: FC<TProps> = ({ size, className }) => {
   };
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      if (selectArea.current && !selectArea.current.contains(event.target)) {
-        setEdited(false);
-      }
-    }
+    document.addEventListener("mouseup", (e) =>
+      handleClickOutside(e, () => setEdited(false))
+    );
 
-    document.addEventListener("mouseup", handleClickOutside);
     return () => {
-      document.removeEventListener("mouseup", handleClickOutside);
+      document.removeEventListener("mouseup", (e) =>
+        handleClickOutside(e, () => setEdited(false))
+      );
     };
   });
 

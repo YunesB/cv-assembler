@@ -30,41 +30,41 @@ export const GeneralInfo: FC = () => {
     setEdited(false);
   };
 
+  if (isEdited) {
+    return (
+      <div className="flex flex-col space-y-2 transition-all">
+        <input
+          name="fullName"
+          type="text"
+          className={`h-[40px] text-4xl font-bold uppercase bg-transparent max-w-full ${COMMON_INPUT_CLASSES}`}
+          value={personalData.fullName}
+          onChange={handleChange}
+        />
+        <input
+          name="profession"
+          type="text"
+          className={`h-[24px] uppercase tracking-wide bg-transparent ${COMMON_INPUT_CLASSES}`}
+          value={personalData.profession}
+          onChange={handleChange}
+        />
+        <div className="flex items-center ml-auto space-x-2">
+          <IconButton src={CheckIcon} onClick={handleConfirm} />
+          <IconButton src={CloseIcon} onClick={handleCancel} />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <>
-      {isEdited ? (
-        <div className="flex flex-col space-y-2 transition-all">
-          <input
-            name="fullName"
-            type="text"
-            className={`h-[40px] text-4xl font-bold uppercase bg-transparent max-w-full ${COMMON_INPUT_CLASSES}`}
-            value={personalData.fullName}
-            onChange={handleChange}
-          />
-          <input
-            name="profession"
-            type="text"
-            className={`h-[24px] uppercase tracking-wide bg-transparent ${COMMON_INPUT_CLASSES}`}
-            value={personalData.profession}
-            onChange={handleChange}
-          />
-          <div className="flex items-center ml-auto space-x-2">
-            <IconButton src={CheckIcon} onClick={handleConfirm} />
-            <IconButton src={CloseIcon} onClick={handleCancel} />
-          </div>
-        </div>
-      ) : (
-        <div
-          className="flex flex-col space-y-2 hover:opacity-50 transition-all cursor-pointer"
-          onClick={() => setEdited(true)}
-        >
-          <h1 className="text-4xl font-bold uppercase tracking-widest max-w-full">
-            {personalData.fullName}
-          </h1>
-          <h2 className="uppercase tracking-wide">{personalData.profession}</h2>
-          <span className="h-[32px]"></span>
-        </div>
-      )}
-    </>
+    <div
+      className="flex flex-col space-y-2 hover:opacity-50 transition-all cursor-pointer"
+      onClick={() => setEdited(true)}
+    >
+      <h1 className="text-4xl font-bold uppercase tracking-widest max-w-full">
+        {personalData.fullName}
+      </h1>
+      <h2 className="uppercase tracking-wide">{personalData.profession}</h2>
+      <span className="h-[32px]"></span>
+    </div>
   );
 };

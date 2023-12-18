@@ -90,35 +90,32 @@ const ContactItem: FC<TProps> = ({ data, onDelete }) => {
     setInputValue(e.target.value);
   };
 
+  if (isEdited) {
+    return (
+      <li className="mt-5 flex items-center justify-between space-x-2">
+        <ContactTypeSelector type={currentType} changeType={handleTypeChange} />
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleChange}
+          className={`bg-transparent ${COMMON_INPUT_CLASSES}`}
+        />
+        <span className="flex space-x-2">
+          <IconButton src={CheckIcon} onClick={handleConfirm} />
+          <IconButton src={CloseIcon} onClick={handleCancel} />
+          <IconButton src={DeleteIcon} onClick={() => onDelete(id)} />
+        </span>
+      </li>
+    );
+  }
+
   return (
-    <>
-      {isEdited ? (
-        <li className="mt-5 flex items-center justify-between space-x-2">
-          <ContactTypeSelector
-            type={currentType}
-            changeType={handleTypeChange}
-          />
-          <input
-            type="text"
-            value={inputValue}
-            onChange={handleChange}
-            className={`bg-transparent ${COMMON_INPUT_CLASSES}`}
-          />
-          <span className="flex space-x-2">
-            <IconButton src={CheckIcon} onClick={handleConfirm} />
-            <IconButton src={CloseIcon} onClick={handleCancel} />
-            <IconButton src={DeleteIcon} onClick={() => onDelete(id)} />
-          </span>
-        </li>
-      ) : (
-        <li
-          className="h-[32px] mt-5 hover:opacity-60 transition-all cursor-pointer flex items-center"
-          onClick={() => setEdited(true)}
-        >
-          {StaticContainer}
-        </li>
-      )}
-    </>
+    <li
+      className="h-[32px] mt-5 hover:opacity-60 transition-all cursor-pointer flex items-center"
+      onClick={() => setEdited(true)}
+    >
+      {StaticContainer}
+    </li>
   );
 };
 

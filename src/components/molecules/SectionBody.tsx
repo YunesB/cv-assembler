@@ -8,11 +8,7 @@ import {
   TTableDataType,
   TSkill
 } from "../../projectTypes/general.types";
-import {
-  DATED_SECTION_TYPE,
-  MEDIUM_SIZE,
-  SKILLS_SECTION_TYPE
-} from "../../utils/constants";
+import { DATED_SECTION_TYPE, MEDIUM_SIZE } from "../../utils/constants";
 import { PlusIcon } from "../../utils/icons";
 import { Icon } from "../atoms/Icon";
 
@@ -58,12 +54,11 @@ export const SectionBody: FC<TProps> = ({ type, data }) => {
   const skillsData = sectionData as TSkill[];
 
   const isTable = type === DATED_SECTION_TYPE;
-  const isSkills = type === SKILLS_SECTION_TYPE;
 
   const handleAddLine = () => {
     if (isTable) {
       setSectionData([...tableData, { ...EMPTY_TABLE_LINE, id: uuidv4() }]);
-    } else if (isSkills) {
+    } else {
       setSectionData([...skillsData, { ...EMPTY_SKILL_LINE, id: uuidv4() }]);
     }
   };
@@ -72,45 +67,35 @@ export const SectionBody: FC<TProps> = ({ type, data }) => {
     if (isTable) {
       const filteredData = tableData.filter((t) => t.id !== id);
       setSectionData(filteredData);
-    } else if (isSkills) {
+    } else {
       const filteredData = skillsData.filter((t) => t.id !== id);
       setSectionData(filteredData);
     }
   };
 
+  if (isTable) {
+    return (
+      <>
+        <ul className="flex flex-col space-y-4 my-4 mb-4">
+          {tableData.map((data) => (
+            <DatedItem data={data} key={data.id} onDelete={handleDeleteLine} />
+          ))}
+        </ul>
+
+        <AddButton onAdd={handleAddLine} />
+      </>
+    );
+  }
+
   return (
     <>
-      {isTable && (
-        <>
-          <ul className="flex flex-col space-y-4 my-4 mb-4">
-            {tableData.map((data) => (
-              <DatedItem
-                data={data}
-                key={data.id}
-                onDelete={handleDeleteLine}
-              />
-            ))}
-          </ul>
+      <ul className="flex flex-col space-y-4 my-4 mb-4">
+        {skillsData.map((data) => (
+          <SkillsItem data={data} key={data.id} onDelete={handleDeleteLine} />
+        ))}
+      </ul>
 
-          <AddButton onAdd={handleAddLine} />
-        </>
-      )}
-
-      {isSkills && (
-        <>
-          <ul className="flex flex-col space-y-4 my-4 mb-4">
-            {skillsData.map((data) => (
-              <SkillsItem
-                data={data}
-                key={data.id}
-                onDelete={handleDeleteLine}
-              />
-            ))}
-          </ul>
-
-          <AddButton onAdd={handleAddLine} />
-        </>
-      )}
+      <AddButton onAdd={handleAddLine} />
     </>
   );
 };
